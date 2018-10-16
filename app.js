@@ -64,7 +64,7 @@ app.use('/',auth)
 app.use('/post',post)
 app.use('/comment',comment)
 
-const index = require('./routes/index');
-app.use('/', index);
+// const index = require('./routes/index');
+// app.use('/', index);
 
 module.exports = app;
