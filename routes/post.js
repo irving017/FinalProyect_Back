@@ -40,7 +40,7 @@ router.post('/new',verifyToken,uploadCloud.single('photo'),(req,res,next)=>{
 
 router.get('/:id',(req,res,next)=>{
   const {id}= req.params
-  Post.findById(id).populate('user')
+  Post.findById(id).populate('user comments')
   .then(post=>{
     res.status(201).json(post)
   })

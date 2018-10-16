@@ -9,6 +9,19 @@ router.post('/new',verifyToken,(req,res,next)=>{
   Comment.create(req.body)
   .then(comment=>{
     Post.findByIdAndUpdate(comment.post,{$push:{comments:comment._id}})
+    .then(post=>{
+      res.status(201).json(post)
+    })
+    .catch(er=>nect(er))
+  })
+  .catch(e=>next(e))
+})
+
+router.get('/all/:id',(req,res,next)=>{
+  const {id}=req.params
+  Comment.find({post:id}).populate('owner')
+  .then(comments=>{
+    res.status(201).json(comments)
   })
   .catch(e=>next(e))
 })
