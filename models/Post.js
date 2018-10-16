@@ -25,6 +25,10 @@ const postSchema = new Schema({
     enum:['Todas','Audio y musica','Video','Deportes','Herramientas','Fiestas','Campamento y Excursion'],
     required:true
   },
+  comments:[{
+    type:Schema.Types.ObjectId,
+    ref:'Comment'
+  }],
 },{
   timestamps:{
     createdAt:"created_at",

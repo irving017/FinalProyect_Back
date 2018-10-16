@@ -6,11 +6,21 @@ const User = require('../models/User')
 const uploadCloud = require('../helpers/cloudinary')
 
 router.get('/allproducts',(req,res,next)=>{
-  Post.find()
-  .then(posts=>{
-    res.status(201).json(posts)
-  })
-  .catch(e=>next(e))
+  const {category} = req.query
+  if(category==='Todas'){
+    Post.find()
+    .then(posts=>{
+      res.status(201).json(posts)
+    })
+    .catch(e=>next(e))
+  }
+  else{
+    Post.find({category})
+    .then(posts=>{
+      res.status(201).json(posts)
+    })
+    .catch(e=>next(e))
+  }
 })
 
 router.post('/new',verifyToken,uploadCloud.single('photo'),(req,res,next)=>{
