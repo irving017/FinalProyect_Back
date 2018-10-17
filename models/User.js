@@ -21,7 +21,8 @@ const userSchema = new Schema({
     type:Schema.Types.ObjectId,
     ref: 'Post'
   }],
-  paymethod:String
+  paymethod:String,
+  addres:String
 },{
   timestamps:{
     createdAt:"created_at",
