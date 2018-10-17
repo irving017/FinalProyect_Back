@@ -18,7 +18,8 @@ const notSchema = new Schema({
     type:String
   },
   initDay:String,
-  lastDay:String
+  lastDay:String,
+  phone:Number
 },{
   timestamps:{
     createdAt:"created_at",

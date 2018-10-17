@@ -4,7 +4,7 @@ const User = require('../models/User')
 exports.verifyToken = (req,res,next)=>{
   //1.-checar si llego un token
   const token = req.body.token || req.query.token || req.headers['x-access-token'] || req.headers['authorizacion']
-  if(!token) return res.status(401).json({message:'Ni mandaste token'})
+  if(!token) return res.status(401).json({message:'No estas loggeado'})
   //2.-Si llego,Checar que el token sea valido
   jwt.verify(token,process.env.TOKEN_GENERATOR,(err,decoded)=>{
     if(!token) return res.status(401).json({message:'Tu token no sirve'})

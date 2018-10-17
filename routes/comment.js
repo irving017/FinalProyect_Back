@@ -26,4 +26,12 @@ router.get('/all/:id',(req,res,next)=>{
   .catch(e=>next(e))
 })
 
+router.get('/user',verifyToken,(req,res,next)=>{
+  Comment.find({userpost:req.user._id}).populate('owner post')
+  .then(comments=>{
+    res.status(201).json(comments)
+  })
+  .catch(e=>next(e))
+})
+
 module.exports = router
